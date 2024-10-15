@@ -1,0 +1,27 @@
+# [START app_yaml]
+
+runtime: nodejs20
+
+service: default  # or your service name if not default
+
+# instance_class: F1
+
+# automatic_scaling:
+#   min_idle_instances: automatic
+#   max_idle_instances: automatic
+#   min_pending_latency: automatic
+#   max_pending_latency: automatic
+
+# env_variables:
+#   NODE_ENV: 'production'
+
+handlers:
+- url: /.*
+  secure: always
+  redirect_http_response_code: 301
+  script: auto
+
+# Add this entrypoint configuration
+entrypoint: npm run start:prod
+
+# [END app_yaml]
