@@ -23,6 +23,6 @@ handlers:
   script: auto
 
 # Add this entrypoint configuration
-entrypoint: npm run start:prod
+entrypoint: yarn start:prod
 
 # [END app_yaml]
