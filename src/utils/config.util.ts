@@ -1,4 +1,5 @@
 import * as dotenv from 'dotenv';
+import * as Joi from 'joi';
 
 // Load .env file if it exists (for local development)
 dotenv.config();
@@ -44,3 +45,10 @@ export class ConfigService {
 }
 
 export const configService = ConfigService.getInstance();
+
+export const configValidationSchema = Joi.object({
+  // ... (existing validations)
+  ALLOWED_ORIGINS: Joi.string().required(),
+  SENDGRID_API_KEY: Joi.string().required(),
+  FROM_EMAIL: Joi.string().email().required(),
+});

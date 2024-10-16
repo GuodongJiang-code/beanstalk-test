@@ -16,6 +16,8 @@ env_variables:
   NODE_ENV: 'dev'
   LOG_LEVEL: 'info'
   ALLOWED_ORIGINS: 'https://nyuuly.github.io,http://localhost:5173'
+  SENDGRID_API_KEY: 'your_sendgrid_api_key_here'
+  FROM_EMAIL: 'your_verified_sender_email@example.com'
 
 handlers:
 - url: /.*
