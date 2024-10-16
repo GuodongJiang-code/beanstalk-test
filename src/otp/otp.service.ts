@@ -6,6 +6,7 @@ import * as sgMail from '@sendgrid/mail';
 export class OtpService {
   constructor(private configService: ConfigService) {
     sgMail.setApiKey(this.configService.get<string>('SENDGRID_API_KEY'));
+    console.log(`SENDGRID_API_KEY: ${this.configService.get<string>('SENDGRID_API_KEY')}`);
   }
 
   generateOtp(): string {
@@ -17,14 +18,15 @@ export class OtpService {
     const msg = {
       to,
       from: this.configService.get<string>('FROM_EMAIL'),
-      subject: 'Your OTP for Authentication',
-      text: `Your OTP is: ${otp}`,
-      html: `<strong>Your OTP is: ${otp}</strong>`,
+      subject: 'Building and managing apps in the cloud just got easier. Now that you have joined. Your OTP for Authentication',
+      text: `Input your OTP showing below.`,
+      html: `<strong>Your OTP: ${otp}</strong>`,
     };
 
     try {
-      await sgMail.send(msg);
-      console.log('OTP email sent successfully');
+      const response = await sgMail.send(msg);
+      console.log('OTP email sent successfully with response:');
+      console.log(response);
     } catch (error) {
       console.error('Error sending OTP email:', error);
       throw new Error('Failed to send OTP email');
