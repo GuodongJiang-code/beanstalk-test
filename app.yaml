@@ -12,8 +12,9 @@ service: default  # or your service name if not default
 #   min_pending_latency: automatic
 #   max_pending_latency: automatic
 
-# env_variables:
-#   NODE_ENV: 'production'
+env_variables:
+  NODE_ENV: 'dev'
+  LOG_LEVEL: 'info'
 
 handlers:
 - url: /.*
